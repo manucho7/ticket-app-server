@@ -23,11 +23,17 @@ class Sockets {
                 const nuevoTicket = this.ticketList.crearTicket();
                 callback(nuevoTicket);
             });
+
+            //Siguiente ticket
+            socket.on('siguiente-ticket', ({ agente, escritorio }, callback) => {
+                
+                const suTicket = this.ticketList.asignarTicket(agente, escritorio);
+                
+                callback(suTicket);
+            });
         
         });
     }
-
-
 }
 
 
