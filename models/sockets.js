@@ -24,13 +24,15 @@ class Sockets {
                 callback(nuevoTicket);
             });
 
-            //Siguiente ticket
+            //Asignando siguiente ticket
             socket.on('siguiente-ticket', ({ agente, escritorio }, callback) => {
                 
                 const suTicket = this.ticketList.asignarTicket(agente, escritorio);
                 
                 callback(suTicket);
             });
+
+            this.io.emit('ticket-asignado', this.ticketList.ultimos13);
         
         });
     }
